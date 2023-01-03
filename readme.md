@@ -1,15 +1,19 @@
-# Minimal Alt1/webpack/typescript example
+# Rock1 - Alt1 Plugin for Vorago
+> Forked from DaStewie's VoragoTag plugin.
 
-how to use
+## Getting started
+
+First, install dependencies:
 ```sh
-#to initialize the repo and install dependencies
-npm i
-#build
-npm run build
-#alternatively to auto-rebuild when source files are changed
-npm run watch
+npm install
 ```
 
-You can open `./dist/index.html` in your browser and it will give some basic functionality based one pasted images.
+To run the web app locally:
+```sh
+npm run start
+```
 
-You can also open it in the Alt1 browser and click the `add app` button that appears to get some basic alt1 functionality.
+To add it locally (you must be running it first!):
+```sh
+npm run add
+```

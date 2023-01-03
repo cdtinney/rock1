@@ -1,16 +1,16 @@
 {
-	"appName": "example app",
-	"description": "minimal alt1 webpack/ts example test app",
+	"appName": "Rock1",
+	"description": "Vorago helper",
 	"appUrl": "./index.html",
 	"configUrl": "./appconfig.json",
-	"iconUrl": "",
-	"defaultWidth": 250,
-	"defaultHeight": 250,
-	"minWidth": 250,
-	"minHeight": 180,
-	"maxWidth": 1000,
-	"maxHeight": 1000,
+	"iconUrl": "./images/icon.png",
+	"defaultWidth": 100,
+	"defaultHeight": 50,
+	"minWidth": 50,
+	"minHeight": 20,
+	"maxWidth": 400,
+	"maxHeight": 500,
 	"requestHandlers": [ ],
 	"activators": [	],
-	"permissions": "pixel"
+	"permissions": "overlay,pixel,gamestate"
 }
