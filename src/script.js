@@ -1,74 +1,72 @@
-/* https://codepen.io/davinciharsha/pen/vGBXzR */
+var zero_hp = {};
+ImageData.fromBase64(function(i) {
+		zero_hp.img = i
+	},
+	'iVBORw0KGgoAAAANSUhEUgAAABEAAAAcCAYAAACH81QkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJiSURBVEhLpVRNaxNRFH1NZpKZZnTyMcTWgImYgkXElaK4EyxCiVTaRQgiUkQ3gooiiP0F7nThRrpzo7XUiksVBV0ZRXFt1D+Q9h8c5zw88VkCmhq4uV/nnHfn5mXMRGMK5ck9uHFrCRubm+CH/ur1m7ZerNawM5lEUtuL2r5pm5NDzz7NeH4OcwttfPr8BUEUI5PJwBiDbreL1tw8onLVkijkikqIscl6Pt68fWcJjAWYb5/FysoTRMVkcDqnoWky1ulTEQ9r68/Q7nQQJxP2ZDbOLV7E6tpT+PnQknY1mrbuitHsJJmsh9aZBfR6PYQ7SoPmt+8/cDqt+/nA5hTXDjStsFaEjctXrqHf79vF8nP+wiWwl+z+TdRO9BiKrYiUudixX4ulFeLyHwSKMCbe9YbPzKZOUdMl02tXEtPBjA2XycAFuQIEs8/cFRGOZlxFEdhwSawr1mEStiL8cgv0FCVRohJxMa6wvfYMRGBM4xVXjWB61lwBmRFRYBmBmki5DmNOvPp2EhdI0x9N04jk5jRi6O1OhjXcuh7ZnVY9esNg67MSzF+BZHmKSJg5cTpwMImENLa8asQxF5GcgQgTTSCC7sKwnuqqMTaznUX8r5lMLsQoVqmEeHE/Z+3reg6HDwYw48dPoXBsBvKusba1v3y3jqXbU8jGFcyciPH4Tj4VqU9jFOs9H4cXFeGXqjbHe390EZLG0nex8lfL8fZE+MJSvi2RjdfpDhwRm7uAf7HVeyWcPOrZeLZVt/nIIgeONPHhYR4vH0T4+CjC/kPp+2QY8G8W1ppoNgJkg0J6dwL8BHjxrdibRBHwAAAAAElFTkSuQmCC'
+);
 
-function _timer(callback) {
-	var time = 0; 		// The default time of the timer
-	var mode = 0; 		// Mode: count up or count down
-	var status = 0; 	// Status: timer is running or stopped
-	var timer_id; 		// This is used by setInterval function
+var zero_scop_hp = {};
+ImageData.fromBase64(function(i) {
+		zero_scop_hp.img = i
+	},
+	'iVBORw0KGgoAAAANSUhEUgAAAAwAAAAdCAYAAACe/43ZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAImSURBVDhPlVNNaxNRFH3NJJOvMd9EY8DUONNaROLCiq24qGIrhEoVFWrrxo0bFy4DfuDHzp0u3Eh3bhRcCO6MUnEp+g/0JyQ/4TjnxTM8pS0YOLn33HfPuffNMKbRPoxKs40D0xFqrUMgJ0qNluWCuDkxv4CllT7c3+07dxMTRoloZKKZWWx/+Yr+pcswxlhUq1UUyzXrKlEyIYoirK5dxWg0woNHTzDbO2md6q2ObdLKWtOEsSCoNhFUGhgMBhiPx7hyfcM6s0lwJsxg7dp64ra+eRMfh0PsqzVtzRVykul2u3j4+Omf605+Z5fOI+1nk1UYCTsh5Xko1fcjH5SSSxOV5sFkqiJhXBfGIF5FnI5aizlryYvjAYvkroBRaB+ZmwhckXJNkolEhk1yl0ANjK4Jc8MxEvCAkTW3WbAC/vFSOmSUGzkNdM7cPiVNUYPLCXc9K9Ahnci1npoUeWb4NNioyKJMyNlMLpFxL8mch+Ruk3JG+x5YJJhLqLpqzDnR9G/cwv/ApPw8dkK9nsfwpW/x872P+eM5WzeFxRUUzlxEcWEZzBmJrecd3L8XwSvXsXyujLfPfOR6i7GgM4ed8OtDAemggkz8NZLjWwZeIf4E/m0U2DCVziT881Z58q24TS4oYIM4BV6uuLtgvJ39S0C+p+DdiyounE7bvL/asXwq5e0uOHYqxPfXWXx6FeDHmwBHe+29L03k2yHC6ZxdJeXnYh7iN9MM/p+Mvt0nAAAAAElFTkSuQmCC'
+);
 
-	var start_time = new Date().getTime();
-	// this will start the timer ex. start the timer with 1 second interval timer.start(1000) 
-	this.start = function(interval) {
-		interval = (typeof(interval) !== 'undefined') ? interval : 1000;
 
-		if (status == 0) {
-			status = 1;
-			timer_id = setInterval(function() {
-				time = start_time - (new Date().getTime());
-				if (typeof(callback) === 'function') callback(time);
-			}, interval);
-		}
+
+
+function find(img) {
+	if (!img) img = a1lib.bindfullrs();
+	if (!img) return null;
+
+	var VoragoImg = a1lib.findsubimg(img, zero_hp.img);
+	if (VoragoImg.length != 0) {
+		return true;
 	}
-
-	//  Same as the name, this will stop or pause the timer ex. timer.stop()
-	this.stop = function() {
-		if (status == 1) {
-			status = 0;
-			clearInterval(timer_id);
-			callback(0);
-		}
+	
+	var ScopImg = a1lib.findsubimg(img, zero_scop_hp.img);
+	if (ScopImg.length != 0) {
+		return true;
 	}
+	return false;
+} 
+function getColor(value) {
+	var hue = (value * 1.2).toString(10);
+	return "hsl(" + hue + ",75%,50%)";
+}
+function sanitisePercentage(i){
+    return Math.min(100,Math.max(0,i));   
+}
+var running = false;
 
-	// Reset the timer to zero or reset it to your own custom time ex. reset to zero second timer.reset(0)
-	this.reset = function(sec) {
-		sec = (typeof(sec) !== 'undefined') ? sec : 0;
-		start_time = (new Date().getTime()) + (sec * 100);
+var beamTimer = new _timer(function(time) {
+	var secs_left = (Math.floor(time / 600) * 0.6 ).toFixed(1);
+	$("#beam_timer").html(secs_left + "s");
+	
+	var percent = sanitisePercentage(secs_left / 246 * 1000);
+	
+	$("#beamBar").width(percent + "%");
+	$("#beamBar").css('background-color', getColor(percent));
+	if (time <= 0) {
+		beamTimer.stop();
+		running = false;
 	}
+});
 
-	// Change the mode of the timer, count-up (1) or countdown (0)
-	this.mode = function(tmode) {
-		mode = tmode;
-	}
 
-	// This methode return the current value of the timer
-	this.getTime = function() {
-		return time;
-	}
-
-	// This methode return the current mode of the timer count-up (1) or countdown (0)
-	this.getMode = function() {
-		return mode;
-	}
-
-	// This methode return the status of the timer running (1) or stoped (1)
-	this.getStatus = function() {
-		return status;
+//01:38:24 0 hp
+//01:38:48 tag
+//40 ticks
+function start() {
+	if (window.alt1) {
+		setInterval(function(time) {
+			if (!running && find()) {
+				running = true;
+				beamTimer.reset(246);
+				beamTimer.start(10);
+			}
+		}, 100);
+	} else {
+		$("#telosMenu").html('<a href="alt1://addapp/http://holycoil.nl/alt1/EDcgest/appconfig.json">Click here to add this app</a>'); 
 	}
 }
-
-/* example use
-var timer;
- 
-$(document).ready(function(e) {
-	timer = new _timer(
-		function(time) {
-			if (time == 0) {
-				timer.stop();
-				alert('time out');
-			}
-		}
-	);
-	timer.reset(0);
-	timer.mode(0);
-});
-*/
