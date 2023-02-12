@@ -1,4 +1,4 @@
-/* https://codepen.io/davinciharsha/pen/vGBXzR */
+/* eslint-env browser */
 
 function _timer(callback) {
 	var time = 0; 		// The default time of the timer

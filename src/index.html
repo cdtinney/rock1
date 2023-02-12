@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./css/nis.css"/>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/nis.css" />
 	<link rel="stylesheet" type="text/css" href="./css/style.css" >
-	<link rel="stylesheet" type="text/css" href="./css/tooltipster.bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/tooltipster.css">
-	<style>
-	.Settings {
-		width:100%;
-	}
-	.Settings tr {
-	    background: linear-gradient(#534c44, #271d14, #190e03, #190e03, #241a11);
-	}
-	.Settings tr:hover { 
-		background: linear-gradient(#1a0b00, #913200);
-	}
-	.Settings td {
-		border: 1px solid #913200
-	}
-	</style>
+	
+	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://runeapps.org/runeappslib.js"></script>
+  <script type="text/javascript" src="https://www.unpkg.com/@alt1/base/dist/index.bundle.js"></script>
+  <script type="text/javascript" src="https://www.unpkg.com/@alt1/ocr/dist/index.bundle.js"></script>
 </head>
 <body class="nis" onload="start();">
-	<span id="beam_timer" style="font-size:14px;font-weight: bold;">0.0s </span>
-	<div class="myProgress" style="color:black">		<div class="myBar" id="beamBar">		</div>	</div>
-	
-	<!-- jQuery scripts -->
-	<script type="text/javascript" src="./js/jquery.js"></script>
-	<script type="text/javascript" src="./js/tooltipster.bundle.js"></script>
-	<script type="text/javascript" src="./js/tooltipster-follower.js"></script>
-	<!-- runeapps scripts -->
-    <script type="text/javascript" src="./js/runeappslib.js"></script>
-    <script type="text/javascript" src="./js/alt1lib.js"></script>
-    <script type="text/javascript" src="./js/imagedetect.js"></script>
-	<script type="text/javascript" src="./js/chatbox.js"></script>
+	<span id="timerText" style="font-size:14px;font-weight: bold;">
+		-0.0t
+	</span>
+	<div class="progress-bar" style="color:black">
+		<div class="progress-bar__inner" id="progressBar">
+		</div>
+	</div>
+
 	<!-- main script -->
 	<script type="text/javascript" src="./timer.js"></script>
 	<script type="text/javascript" src="./script.js"></script>
+
+	<!-- Footer -->
+	<footer>
+		<div
+			id="settingsButton"
+			title="Settings"
+			type="button"
+			class="button--settings"
+			onclick='window.open("settings.html", "_blank", "height=560, width=400, status=yes, toolbar=no, menubar=no, location=no,addressbar=no");'
+		>
+			Settings
+		</div>
+	</footer>
 </body>
 </html>
