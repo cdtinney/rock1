@@ -2,7 +2,15 @@
 
 > Forked from DaStewie's VoragoTag plugin.
 
-## Getting started
+## Usage
+
+1) Open this URL to add to Alt1: `alt1://addapp/http://127.0.0.1:8080/appconfig.json`
+2) Configure settings
+3) Enjoy!
+
+## Development
+
+### Getting started
 
 First, install dependencies:
 

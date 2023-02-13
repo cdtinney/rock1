@@ -2,7 +2,7 @@
 
 /**
  * Progress bar changes from green > red.
- * @param {Number} percent 
+ * @param {Number} percent
  * @returns {String} color the bar should use
  */
 function getProgressBarColor(percent) {
@@ -38,19 +38,21 @@ async function initialize() {
 	const timer = window.initializeTimer(updateProgressBar.bind(this));
 	const voragoImageDetect = await window.initializeVoragoImageDetect();
 
-	if (window.alt1) {
-		setInterval(function() {
-			if (timer.isRunning) {
-				return;
-			}
+	setInterval(function() {
+    // if (!window.alt1) {
+    //   console.error('alt1lib not found');
+    //   document.getElementById("addToAlt1Url").style.display = "flex";
+    //   return;
+    // }
 
-			const shouldStartTimer = voragoImageDetect.findZeroHpImage();
-			if (shouldStartTimer) {
-				timer.reset(24.6); // 24.6 seconds (40t) from zero HP to TC tick
-				timer.start(10); // Update every 10ms
-			}
-		}, 100); // 100ms
-	} else {
-		console.error('alt1lib not found');
-	}
+		if (timer.isRunning) {
+			return;
+		}
+
+		const shouldStartTimer = voragoImageDetect.findZeroHpImage();
+		if (shouldStartTimer) {
+			timer.reset(24.6); // 24.6 seconds (40t) from zero HP to TC tick
+			timer.start(10); // Update every 10ms
+		}
+	}, 100); // 100ms
 }
