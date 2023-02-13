@@ -1,5 +1,10 @@
 /* eslint-env browser */
 
+/**
+ * Progress bar changes from green > red.
+ * @param {Number} percent 
+ * @returns {String} color the bar should use
+ */
 function getProgressBarColor(percent) {
 	const hue = (percent * 1.2).toString(10);
 	return "hsl(" + hue + ",75%,50%)";
@@ -46,6 +51,6 @@ async function initialize() {
 			}
 		}, 100); // 100ms
 	} else {
-		// TODO: Throw error
+		console.error('alt1lib not found');
 	}
 }

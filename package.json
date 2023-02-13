@@ -1,7 +1,7 @@
 {
 	"scripts": {
-		"add": "open-cli alt1://addapp/http://127.0.0.1:8080/src/appconfig.json",
-		"start": "npx live-server --open=src/index.html"
+		"add": "open-cli alt1://addapp/http://127.0.0.1:8080/appconfig.json",
+		"start": "npx live-server --open=index.html"
 	},
 	"dependencies": {
 		"@alt1/base": "^1.0.0-alpha.2"

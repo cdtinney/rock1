@@ -3,7 +3,7 @@
 	"description": "A Vorago helper",
 	"appUrl": "./index.html",
 	"configUrl": "./appconfig.json",
-	"iconUrl": "./images/icon.png",
+	"iconUrl": "./src/images/icon.png",
 	"defaultWidth": 100,
 	"defaultHeight": 100,
 	"minWidth": 50,
