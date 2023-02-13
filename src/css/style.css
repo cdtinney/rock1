@@ -1,6 +1,14 @@
+/* Main app */
+
+.timer-text {
+	font-size: 14px;
+	font-weight: bold;
+}
+
 .progress-bar {
 	width: 100%;
 	background-color: grey;
+	color: black;
 	border-radius: 5px;
 }
 
@@ -9,4 +17,10 @@
 	height: 20px;
 	background-color: green;
 	border-radius: 5px;
+}
+
+.footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 4px;
 }

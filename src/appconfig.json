@@ -1,11 +1,11 @@
 {
 	"appName": "Rock1",
-	"description": "Vorago helper",
+	"description": "A Vorago helper",
 	"appUrl": "./index.html",
 	"configUrl": "./appconfig.json",
 	"iconUrl": "./images/icon.png",
 	"defaultWidth": 100,
-	"defaultHeight": 50,
+	"defaultHeight": 100,
 	"minWidth": 50,
 	"minHeight": 20,
 	"maxWidth": 400,

@@ -1,7 +1,8 @@
 /* eslint-env browser */
 
 // Global variables
-let Alt1 = window.A1lib;
+const Rock1 = window.Rock1;
+const Alt1 = window.A1lib;
 let zeroHpImageData;
 let zeroHpScopImageData;
 let isTimerRunning = false;
@@ -35,21 +36,28 @@ function getColor(value) {
 	return "hsl(" + hue + ",75%,50%)";
 }
 
-function sanitisePercentage(i){
+function sanitisePercentage(i) {
   return Math.min(100, Math.max(0, i));
 }
 
 // eslint-disable-next-line no-undef
 const beamTimer = new _timer(function(time) {
+	const Settings = window.Rock1.Settings;
+
 	const secsLeft = (Math.floor(time / 600) * 0.6 ).toFixed(1);
 	const ticksLeft = Math.floor(secsLeft / 0.6);
 
-	$("#timerText").html("-" + ticksLeft + "t");
+	if (Settings.displayType === Settings.DisplayType.Ticks) {
+		document.getElementById("timerText").innerHTML = "-" + ticksLeft + "t";
+	} else {
+		document.getElementById("timerText").innerHTML = "-" + secsLeft + "s";
+	}
 
 	const percent = sanitisePercentage(secsLeft / 246 * 1000);
 
-	$("#progressBar").width(percent + "%");
-	$("#progressBar").css('background-color', getColor(percent));
+	const progressBarElem = document.getElementById("progressBar");
+	progressBarElem.style.width = percent + "%";
+	progressBarElem.style.backgroundColor = getColor(percent)
 
 	if (time <= 0) {
 		beamTimer.stop();
@@ -61,10 +69,10 @@ const beamTimer = new _timer(function(time) {
 // 01:38:48 tag
 // 40 ticks
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function start() {
+function initialize() {
+	window.initializeSettings();
+
 	initializeImageData();
-	beamTimer.reset(246);
-	beamTimer.start(10);
 
 	if (window.alt1) {
 		setInterval(function() {
