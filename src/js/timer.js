@@ -1,57 +1,61 @@
 /* eslint-env browser */
 
-function _timer(callback) {
-	var time = 0; 		// The default time of the timer
-	var mode = 0; 		// Mode: count up or count down
-	var status = 0; 	// Status: timer is running or stopped
-	var timer_id; 		// This is used by setInterval function
+class Timer {
+	currentTime = 0;
+	isRunning = false
+	timerId = null;
+	callback = null;
+	startTime = new Date().getTime();
 
-	var start_time = new Date().getTime();
-	// this will start the timer ex. start the timer with 1 second interval timer.start(1000) 
-	this.start = function(interval) {
-		interval = (typeof(interval) !== 'undefined') ? interval : 1000;
-
-		if (status == 0) {
-			status = 1;
-			timer_id = setInterval(function() {
-				time = start_time - (new Date().getTime());
-				if (typeof(callback) === 'function') callback(time);
-			}, interval);
+	start(interval = 1000) {
+		if (this.isRunning) {
+			return;
 		}
+
+		this.isRunning = true;
+		this.timerId = setInterval(() => {
+			this.currentTime = this.startTime - (new Date().getTime());
+			if (this.currentTime <=0) {
+				this.stop();
+				return;
+			}
+
+			this._triggerCallback();
+		}, interval);
 	}
 
-	//  Same as the name, this will stop or pause the timer ex. timer.stop()
-	this.stop = function() {
-		if (status == 1) {
-			status = 0;
-			clearInterval(timer_id);
-			callback(0);
+	stop() {
+		if (!this.isRunning) {
+			return;
 		}
+
+		this.isRunning = false;
+		clearInterval(this.timerId);
+		this.callback(0);
 	}
 
-	// Reset the timer to zero or reset it to your own custom time ex. reset to zero second timer.reset(0)
-	this.reset = function(sec) {
-		sec = (typeof(sec) !== 'undefined') ? sec : 0;
-		start_time = (new Date().getTime()) + (sec * 100);
+	reset(newStartTimeInSeconds = 0) {
+		this.startTime = (new Date().getTime()) + (newStartTimeInSeconds * 1000);
 	}
 
-	// Change the mode of the timer, count-up (1) or countdown (0)
-	this.mode = function(tmode) {
-		mode = tmode;
+	constructor(callback) {
+		this.callback = callback;
 	}
 
-	// This methode return the current value of the timer
-	this.getTime = function() {
-		return time;
+	_triggerCallback() {
+		console.error('triggerCallback');
+		const secondsLeft = (Math.floor(this.currentTime / 600) * 0.6 ).toFixed(1);
+		this.callback(secondsLeft);
 	}
+}
 
-	// This methode return the current mode of the timer count-up (1) or countdown (0)
-	this.getMode = function() {
-		return mode;
-	}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function initializeTimer(callback) {
+  if (window.Rock1 && window.Rock1.Timer) {
+    return;
+  }
 
-	// This methode return the status of the timer running (1) or stoped (1)
-	this.getStatus = function() {
-		return status;
-	}
+  window.Rock1 = window.Rock1 || {};
+  window.Rock1.Timer = new Timer(callback);
+	return window.Rock1.Timer;
 }

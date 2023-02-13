@@ -42,7 +42,6 @@ class Settings {
   }
 }
 
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function initializeSettings() {
   if (window.Rock1 && window.Rock1.Settings) {
