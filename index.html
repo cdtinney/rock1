@@ -19,14 +19,13 @@
 <body class="nis" onload="initialize();">
 
 	<!-- Main content -->
-	<main>
-		<span class="timer-text" id="timerText">
-			Ready
-		</span>
+	<main class="container">
 		<div class="progress-bar">
-			<div class="progress-bar__inner" id="progressBar">
-          -10t
+			<div class="progress-bar__bar" id="progressBarBar">
 			</div>
+      <div class="progress-bar__text" id="progressBarText">
+        ready
+      </div>
 		</div>
 	</main>
 
@@ -43,13 +42,12 @@
 		</div>
 	</footer>
 	<div
-		id="addToAlt1Url"
+		id="addContainer"
 		title="Add to Alt1 URL"
-		class="nistext hidden add-to-alt1-url"
+		class="nistext add-to-alt1-url hidden"
 	>
 		Copy this URL and open in new tab to add to Alt1:
-		<div class="add-to-alt1-url__url">
-			alt1://addapp/http://127.0.0.1:8080/appconfig.json
+		<div id="addURL" class="add-to-alt1-url__url">
 		</div>
 	</div>
 </body>

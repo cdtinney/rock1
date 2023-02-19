@@ -14,23 +14,22 @@ class VoragoImageDetect {
   interfaceTransparency = 0;
 
   findZeroHpImage() {
-    return true;
-    // const imgRefBind = Alt1.captureHoldFullRs();
-    // if (!imgRefBind) {
-    //   return null;
-    // }
+    const imgRefBind = Alt1.captureHoldFullRs();
+    if (!imgRefBind) {
+      return null;
+    }
 
-    // const VoragoImg = imgRefBind.findSubimage(this._getZeroHpImage());
-    // if (VoragoImg.length != 0) {
-    //   return true;
-    // }
+    const VoragoImg = imgRefBind.findSubimage(this._getZeroHpImage());
+    if (VoragoImg.length != 0) {
+      return true;
+    }
 
-    // const ScopImg = imgRefBind.findSubimage(this._getZeroHpScopImage());
-    // if (ScopImg.length != 0) {
-    //   return true;
-    // }
+    const ScopImg = imgRefBind.findSubimage(this._getZeroHpScopImage());
+    if (ScopImg.length != 0) {
+      return true;
+    }
 
-    // return false;
+    return false;
   }
 
   _getZeroHpImage() {

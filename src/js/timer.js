@@ -43,7 +43,6 @@ class Timer {
 	}
 
 	_triggerCallback() {
-		console.error('triggerCallback');
 		const secondsLeft = (Math.floor(this.currentTime / 600) * 0.6 ).toFixed(1);
 		this.callback(secondsLeft);
 	}

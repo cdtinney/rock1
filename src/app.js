@@ -20,16 +20,19 @@ function updateProgressBar(secondsLeft) {
 	const ticksLeft = Math.floor(secondsLeft / 0.6);
 
 	if (Settings.displayType === Settings.DisplayType.Ticks) {
-		document.getElementById("timerText").innerHTML = "-" + ticksLeft + "t";
+		document.getElementById("progressBarText").innerHTML = "-" + ticksLeft;
 	} else {
-		document.getElementById("timerText").innerHTML = "-" + secondsLeft + "s";
+		document.getElementById("progressBarText").innerHTML = "-" + secondsLeft;
 	}
 
 	const percent = sanitisePercentage(secondsLeft / 246 * 1000);
 
-	const progressBarElem = document.getElementById("progressBar");
+	const progressBarElem = document.getElementById("progressBarBar");
 	progressBarElem.style.width = percent + "%";
-	progressBarElem.style.backgroundColor = getProgressBarColor(percent)
+	progressBarElem.style.backgroundColor = getProgressBarColor(percent);
+
+  // TODO Change colour of text when on 2nd last tick
+
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,13 +41,14 @@ async function initialize() {
 	const timer = window.initializeTimer(updateProgressBar.bind(this));
 	const voragoImageDetect = await window.initializeVoragoImageDetect();
 
-	setInterval(function() {
-    // if (!window.alt1) {
-    //   console.error('alt1lib not found');
-    //   document.getElementById("addToAlt1Url").style.display = "flex";
-    //   return;
-    // }
+  if (!window.alt1) {
+    console.error('alt1lib not found');
+    document.getElementById("addContainer").style.display = "flex";
+    document.getElementById("addURL").innerText = `alt1://addapp/${window.location.origin}/appconfig.json`;
+    return;
+  }
 
+	setInterval(function() {
 		if (timer.isRunning) {
 			return;
 		}
