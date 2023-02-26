@@ -44,7 +44,7 @@ async function initialize() {
   if (!window.alt1) {
     console.error('alt1lib not found');
     document.getElementById("addContainer").style.display = "flex";
-    document.getElementById("addURL").innerText = `alt1://addapp/${window.location.origin}/appconfig.json`;
+    document.getElementById("addURL").innerText = `alt1://addapp/${window.location.origin}${window.location.pathname}appconfig.json`;
     return;
   }
 
