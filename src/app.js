@@ -20,9 +20,9 @@ function updateProgressBar(secondsLeft) {
 	const ticksLeft = Math.floor(secondsLeft / 0.6);
 
 	if (Settings.displayType === Settings.DisplayType.Ticks) {
-		document.getElementById("progressBarText").innerHTML = "-" + ticksLeft;
+		document.getElementById("progressBarText").innerHTML = "-" + ticksLeft + "t"
 	} else {
-		document.getElementById("progressBarText").innerHTML = "-" + secondsLeft;
+		document.getElementById("progressBarText").innerHTML = "-" + secondsLeft + "s";
 	}
 
 	const percent = sanitisePercentage(secondsLeft / 246 * 1000);
