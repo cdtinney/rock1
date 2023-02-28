@@ -58,5 +58,5 @@ async function initialize() {
 			timer.reset(24.6); // 24.6 seconds (40t) from zero HP to TC tick
 			timer.start(10); // Update every 10ms
 		}
-	}, 100); // 100ms
+	}, 25); // 25ms
 }
