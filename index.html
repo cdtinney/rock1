@@ -22,35 +22,53 @@
 <body class="nis" onload="initialize();">
 
   <!-- Main content -->
-  <main class="container">
-    <div class="progress-bar">
-      <div class="progress-bar__bar" id="progressBarBar">
+  <main class="progress-bar">
+    <div class="progress-bar__overlay">
+      <div class="progress-bar__color-bar" id="progressBarColorBar">
       </div>
-      <div class="progress-bar__text" id="progressBarText">
+      <div class="progress-bar__tc-text" id="progressBarTcText">
         ready
+      </div>
+      <div class="progress-bar__special-tick-timeline">
+        <div class="progress-bar__special-tick-timeline__tick" id="tickTimelineCurrentTick">
+        </div>
+        <div class="progress-bar__special-tick-timeline__tick" id="tickTimelineSecondTick">
+        </div>
+        <div class="progress-bar__special-tick-timeline__tick" id="tickTimelineThirdTick">
+        </div>
       </div>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="d-flex-center">
     <div
       id="settingsButton"
       title="Settings"
       type="button"
       class="nisbutton nissmallbutton"
-      onclick='window.open("./src/settings.html", "_blank", "height=125, width=200, status=yes, toolbar=no, menubar=no, location=no,addressbar=no");'
+      onclick='window.open("./src/settings.html", "_blank", "height=200, width=200, status=yes, toolbar=no, menubar=no, location=no,addressbar=no");'
     >
       Settings
     </div>
   </footer>
-  <div
-    id="addContainer"
-    title="Add to Alt1 URL"
-    class="nistext add-to-alt1-url hidden"
-  >
-    Copy this URL and open in new tab to add to Alt1:
-    <div id="addURL" class="add-to-alt1-url__url">
+  <div id="browserContainer" class="d-flex-center hidden">
+    <div title="Add to Alt1 URL" class="nistext add-to-alt1-url">
+      Copy this URL and open in new tab to add to Alt1:
+      <div id="addURL" class="add-to-alt1-url__url">
+      </div>
+    </div>
+    <div class="debug-container d-flex-center">
+      <h2>Debugging</h2>
+      <div
+        id="startTimerButton"
+        title="Start timer"
+        type="button"
+        class="nisbutton nissmallbutton"
+        onclick='startTimer();'
+      >
+        Start timer
+      </div>
     </div>
   </div>
 </body>

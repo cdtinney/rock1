@@ -1,3 +1,7 @@
 .settings {
   margin: 6px;
 }
+
+.settings fieldset:not(:first-child) {
+  margin-top: 10px;
+}
