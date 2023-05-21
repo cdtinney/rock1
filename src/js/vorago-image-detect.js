@@ -11,6 +11,9 @@ class VoragoImageDetect {
   zeroHpScopImageData = {
     0: null,
   }
+  zeroHpVoragaImageData = {
+    0: null,
+  }
   interfaceTransparency = 0;
 
   findZeroHpImage() {
