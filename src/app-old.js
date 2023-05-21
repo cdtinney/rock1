@@ -1,19 +1,5 @@
 /* eslint-env browser */
 
-/**
- * Progress bar changes from green > red.
- * @param {Number} percent
- * @returns {String} color the bar should use
- */
-function getProgressBarColor(percent) {
-  const hue = (percent * 1.2).toString(10);
-  return "hsl(" + hue + ",75%,50%)";
-}
-
-function sanitisePercentage(integer) {
-  return Math.min(100, Math.max(0, integer));
-}
-
 function updateProgressBar(secondsLeft) {
   const Settings = window.Rock1.Settings;
 

@@ -1,58 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="./src/images/icon.png" type="image/x-icon">
-
-  <!-- External CSS -->
-  <link rel="stylesheet" type="text/css" href="https://runeapps.org/nis/nis.css" />
-  <!-- External JS -->
-  <script type="text/javascript" src="https://runeapps.org/runeappslib.js"></script>
-  <script type="text/javascript" src="https://www.unpkg.com/@alt1/base/dist/index.bundle.js"></script>
-  <script type="text/javascript" src="https://www.unpkg.com/@alt1/ocr/dist/index.bundle.js"></script>
-
-  <!-- CSS -->
-  <link rel="stylesheet" type="text/css" href="./src/css/style.css" >
-  <!-- JS -->
-  <script type="text/javascript" src="./src/js/vorago-image-detect.js"></script>
-  <script type="text/javascript" src="./src/js/timer.js"></script>
-  <script type="text/javascript" src="./src/js/settings.js"></script>
-  <script type="text/javascript" src="./src/app.js"></script>
-  <title>Rock1</title>
-</head>
-<body class="nis" onload="initialize();">
-
-  <!-- Main content -->
-  <main class="container">
-    <div class="progress-bar">
-      <div class="progress-bar__bar" id="progressBarBar">
-      </div>
-      <div class="progress-bar__text" id="progressBarText">
-        ready
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div
-      id="settingsButton"
-      title="Settings"
-      type="button"
-      class="nisbutton nissmallbutton"
-      onclick='window.open("./src/settings.html", "_blank", "height=125, width=200, status=yes, toolbar=no, menubar=no, location=no,addressbar=no");'
-    >
-      Settings
-    </div>
-  </footer>
-  <div
-    id="addContainer"
-    title="Add to Alt1 URL"
-    class="nistext add-to-alt1-url hidden"
-  >
-    Copy this URL and open in a new tab to add to Alt1:
-    <div id="addURL" class="add-to-alt1-url__url">
-    </div>
-  </div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock1</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

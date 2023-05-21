@@ -1,28 +1,44 @@
 {
+  "name": "rock1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
 	"scripts": {
 		"add": "open-cli alt1://addapp/http://127.0.0.1:8080/appconfig.json",
-		"start": "npx live-server --open=index.html"
+		"start": "npx live-server --open=index.html",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
 	},
 	"dependencies": {
-		"@alt1/base": "^1.0.0-alpha.2"
+		"@alt1/base": "^1.0.0-alpha.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
 	},
 	"devDependencies": {
 		"@alt1/imagedata-loader": "^1.0.0-alpha.2",
 		"@alt1/webpack": "^1.0.0-alpha.2",
 		"@types/node": "^12.20.55",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
 		"@types/webpack": "^5.28.0",
-		"@typescript-eslint/eslint-plugin": "^5.48.0",
-		"@typescript-eslint/parser": "^5.48.0",
-		"eslint": "^8.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
 		"file-loader": "^5.1.0",
 		"json-loader": "^0.5.7",
 		"live-server": "^1.2.2",
 		"open-cli": "^7.1.0",
 		"ts-loader": "^9.3.1",
 		"ts-node": "^10.9.1",
-		"typescript": "^4.9.4",
 		"webpack": "^5.65.0",
 		"webpack-chain": "^6.5.1",
-		"webpack-cli": "^4.8.0"
+		"webpack-cli": "^4.8.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2"
 	}
 }

@@ -1,10 +1,10 @@
-/* eslint-env browser */
+export type TimerCallback = (secondsLeft: number) => void;
 
-class Timer {
+export class Timer {
   currentTime = 0;
   isRunning = false
-  timerId = null;
-  callback = null;
+  timerId = 0;
+  callback: TimerCallback;
   startTime = new Date().getTime();
 
   start(interval = 1000) {
@@ -13,7 +13,7 @@ class Timer {
     }
 
     this.isRunning = true;
-    this.timerId = setInterval(() => {
+    this.timerId = setInterval((() => {
       this.currentTime = this.startTime - (new Date().getTime());
       if (this.currentTime <=0) {
         this.stop();
@@ -21,7 +21,7 @@ class Timer {
       }
 
       this._triggerCallback();
-    }, interval);
+    }) as TimerHandler, interval);
   }
 
   stop() {
@@ -38,23 +38,16 @@ class Timer {
     this.startTime = (new Date().getTime()) + (newStartTimeInSeconds * 1000);
   }
 
-  constructor(callback) {
+  constructor(callback: TimerCallback) {
     this.callback = callback;
   }
 
   _triggerCallback() {
     const secondsLeft = (Math.floor(this.currentTime / 600) * 0.6 ).toFixed(1);
-    this.callback(secondsLeft);
+    this.callback(Number.parseFloat(secondsLeft));
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function initializeTimer(callback) {
-  if (window.Rock1 && window.Rock1.Timer) {
-    return;
-  }
-
-  window.Rock1 = window.Rock1 || {};
-  window.Rock1.Timer = new Timer(callback);
-  return window.Rock1.Timer;
+export function initializeTimer(callback: (secondsLeft: number) => void) {
+  return new Timer(callback);
 }
