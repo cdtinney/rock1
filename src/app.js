@@ -14,7 +14,11 @@ function sanitisePercentage(integer) {
   return Math.min(100, Math.max(0, integer));
 }
 
-function updateProgressBar(secondsLeft) {
+function updateProgressBar({ secondsLeft }) {
+  if (secondsLeft < 0) {
+    return;
+  }
+
   const Settings = window.Rock1.Settings;
 
   const ticksLeft = Math.floor(secondsLeft / 0.6);
@@ -38,6 +42,8 @@ function updateProgressBar(secondsLeft) {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function initialize() {
   window.initializeSettings();
+  const metrics = window.initializeMetrics();
+
   const timer = window.initializeTimer(updateProgressBar.bind(this));
   const voragoImageDetect = await window.initializeVoragoImageDetect();
 
@@ -53,8 +59,16 @@ async function initialize() {
       return;
     }
 
-    const shouldStartTimer = voragoImageDetect.findZeroHpImage();
-    if (shouldStartTimer) {
+    const shouldRestartTimer = true;
+    // const shouldRestartTimer = voragoImageDetect.findZeroHpImage();
+    if (shouldRestartTimer) {
+      // We only want to store the time when it's _not_ zero.
+      const timerInSeconds = Math.abs(timer.getTimeInSeconds());
+      if (timerInSeconds !== 0) {
+        metrics.storePhaseDuration(timerInSeconds);
+      }
+
+      timer.stop();
       timer.reset(24.6); // 24.6 seconds (40t) from zero HP to TC tick
       timer.start(10); // Update every 10ms
     }

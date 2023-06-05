@@ -15,11 +15,6 @@ class Timer {
     this.isRunning = true;
     this.timerId = setInterval(() => {
       this.currentTime = this.startTime - (new Date().getTime());
-      if (this.currentTime <=0) {
-        this.stop();
-        return;
-      }
-
       this._triggerCallback();
     }, interval);
   }
@@ -42,9 +37,15 @@ class Timer {
     this.callback = callback;
   }
 
+  getTimeInSeconds() {
+    return (Math.floor(this.currentTime / 600) * 0.6 ).toFixed(1);
+  }
+
   _triggerCallback() {
-    const secondsLeft = (Math.floor(this.currentTime / 600) * 0.6 ).toFixed(1);
-    this.callback(secondsLeft);
+    const secondsLeft = this.getTimeInSeconds();
+    this.callback({
+      secondsLeft,
+    });
   }
 }
 
