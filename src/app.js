@@ -46,6 +46,7 @@ async function initialize() {
 
   const timer = window.initializeTimer(updateProgressBar.bind(this));
   const voragoImageDetect = await window.initializeVoragoImageDetect();
+  let lastZeroHpDetected = 0;
 
   if (!window.alt1) {
     console.error('alt1lib not found');
@@ -54,23 +55,30 @@ async function initialize() {
     return;
   }
 
+  // TODO Increase interval when zero HP detected and is counting phase duration
   setInterval(function() {
-    if (timer.isRunning) {
+    const isZeroHp = voragoImageDetect.findZeroHpImage();
+    if (!isZeroHp) {
       return;
     }
 
-    const shouldRestartTimer = true;
-    // const shouldRestartTimer = voragoImageDetect.findZeroHpImage();
-    if (shouldRestartTimer) {
-      // We only want to store the time when it's _not_ zero.
-      const timerInSeconds = Math.abs(timer.getTimeInSeconds());
-      if (timerInSeconds !== 0) {
-        metrics.storePhaseDuration(timerInSeconds);
-      }
-
-      timer.stop();
-      timer.reset(24.6); // 24.6 seconds (40t) from zero HP to TC tick
-      timer.start(10); // Update every 10ms
+    const detectedZeroHpRecently = (Date.now() - lastZeroHpDetected) < 10000;
+    if (detectedZeroHpRecently) {
+      return;
     }
+
+    console.error('restarting timer, 0 hp detected');
+    lastZeroHpDetected = Date.now();
+    console.error('time detected = ' + lastZeroHpDetected);
+
+    // We only want to store the time when it's _not_ zero.
+    const timerInSeconds = Math.abs(timer.getTimeInSeconds());
+    if (timerInSeconds !== 0) {
+      metrics.storePhaseDuration(timerInSeconds);
+    }
+
+    timer.stop();
+    timer.reset(24.6); // 24.6 seconds (40t) from zero HP to TC tick
+    timer.start(10); // Update every 10ms
   }, 25); // 25ms
 }

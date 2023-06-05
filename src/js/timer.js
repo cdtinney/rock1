@@ -26,7 +26,7 @@ class Timer {
 
     this.isRunning = false;
     clearInterval(this.timerId);
-    this.callback(0);
+    // this.callback(0);
   }
 
   reset(newStartTimeInSeconds = 0) {
