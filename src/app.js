@@ -17,7 +17,7 @@ function sanitisePercentage(integer) {
 function updateProgressBar(secondsLeft) {
   const Settings = window.Rock1.Settings;
 
-  const offset = Settings.offsetByOne ? 1 : 0;
+  const offset = Settings.offsetByOne ? -1 : 0;
   const ticksLeft = Math.floor(secondsLeft / 0.6) + offset;
 
   if (Settings.displayType === Settings.DisplayType.Ticks) {
