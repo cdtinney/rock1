@@ -7,10 +7,16 @@ const DisplayType = {
 
 const LocalStorageKeys = {
   DisplayType: "rock1.displayType",
+  OffsetByOne: "rock1.offsetByOne",
 }
 
 class Settings {
   displayType = DisplayType.Ticks;
+  /**
+   * If true, the timer will be offset by one such that -34 would become -33. This
+   * makes it easier to do inputs based on guides that say -36, -33, -30, etc.
+   */
+  offsetByOne = false;
 
   constructor() {
     this._loadFromLocalStorage();
@@ -18,14 +24,17 @@ class Settings {
 
   _saveToLocalStorage() {
     localStorage.setItem(LocalStorageKeys.DisplayType, this.displayType.toString());
+    localStorage.setItem(LocalStorageKeys.OffsetByOne, this.offsetByOne.toString());
   }
 
   _loadFromLocalStorage() {
     this.displayType = Number.parseInt(localStorage.getItem(LocalStorageKeys.DisplayType)) ?? this.displayType;
+    this.offsetByOne = localStorage.getItem(LocalStorageKeys.OffsetByOne) === "true" ?? false;
   }
 
   initializeForm() {
     document.settingsForm.timerDisplayType.value = this.displayType;
+    document.settingsForm.subtractOne.checked = this.offsetByOne;
   }
 
   initializeListeners() {
@@ -33,6 +42,9 @@ class Settings {
       if (event.target && event.target.matches("input[type='radio']")) {
         this.displayType = Number.parseInt(event.target.value);
       }
+    });
+    document.getElementById("subtractOne").addEventListener('change', (event) => {
+      this.offsetByOne = event.target.checked;
     });
 
     document.getElementById('saveButton').addEventListener('click', () => {
