@@ -34,7 +34,7 @@ class Settings {
 
   initializeForm() {
     document.settingsForm.timerDisplayType.value = this.displayType;
-    document.settingsForm.addOne.checked = this.offsetByOne;
+    document.settingsForm.subtractOne.checked = this.offsetByOne;
   }
 
   initializeListeners() {
@@ -43,7 +43,7 @@ class Settings {
         this.displayType = Number.parseInt(event.target.value);
       }
     });
-    document.getElementById("addOne").addEventListener('change', (event) => {
+    document.getElementById("subtractOne").addEventListener('change', (event) => {
       this.offsetByOne = event.target.checked;
     });
 
